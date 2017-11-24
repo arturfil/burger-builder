@@ -93,36 +93,13 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        // this.setState( {loading: true})
-        // // alert("You may continue");
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.totalPrice,
-        //     customer: {
-        //         name: 'Arturo F',
-        //         adress: {
-        //             street: 'Deez Street',
-        //             zipCode: '55555',
-        //             country: 'Lalaland'
-        //         },
-        //         email: 'test@burger.com'
-        //     },
-        //     deliveryMethod: 'fastest'
-        // }
-        // // this could also be your own backend end point e.g. api-beer-router etc.
-        // //              |
-        // //              V    
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({ loading: false, purchasing: false });
-        //     })
-        //     .catch(error => {
-        //         this.setState({ loading: false, purchasing: false })
-        //     }); 
+        
         const queryParams = [];
         for (let i in this.state.ingredients) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        queryParams.push('price=' + this.state.totalPrice);
+        
         const queryString = queryParams.join('&');
 
         this.props.history.push({
@@ -158,9 +135,10 @@ class BurgerBuilder extends Component {
 
             orderSummary = <OrderSummary
                 ingredients={this.state.ingredients}
+                price={this.state.totalPrice}
                 purchaseCancelled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler}
-                price={this.state.totalPrice} />
+                 />
         }
 
         if (this.state.loading) {
