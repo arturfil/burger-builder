@@ -17,11 +17,10 @@
     font: inherit;
     padding: 6px 10px;
     display: block;
-    box-sizing: border-box;
     width: 100%;
 }
 
 .InputElement:focus {
-    outline:none;
+    outline: none;
     background-color: #ccc;
 }
