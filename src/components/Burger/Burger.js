@@ -26,4 +26,4 @@ const burger = (props) => {
     );
 }
 
-export default withRouter(burger);
+export default withRouter(burger);  
