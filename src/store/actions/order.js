@@ -22,13 +22,13 @@ export const purchaseBurgerStart = () => {
     }
 }
 
-export const purchaseBurger = (orderData, token) => {
+export const purchaseBurger = (orderData) => {
     return dispatch => {
         dispatch(purchaseBurgerStart());
         // this could also be your own backend end point e.g. api-beer-router etc.
         //              |
         //              V    
-        axios.post('/orders.json?auth=' + token, orderData)
+        axios.post('/orders.json', orderData)
             .then(response => {
                 dispatch(purchaseBurgerSuccess(response.data, orderData))
             })
